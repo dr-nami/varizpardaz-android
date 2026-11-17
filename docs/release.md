@@ -9,7 +9,7 @@ so that the app can be split into its own public repository.
 | Part | State |
 | --- | --- |
 | In-app update (download, SHA-256, archive check, system installer) | Run end to end on an emulator (Android 16 image): optional update, required update, user cancel, wrong checksum, wrong file, signing-key mismatch. Not run on a real phone, not on Android 14/15. |
-| Signed release build (Gradle) | **First real release built 2026-11-17: 1.0.0 (versionCode 1), signed with the real key** (kept in `D:\paygate-secrets\`, outside git). `apksigner`: v2 and v3 verify, signer SHA-256 `af3ff57c58d37591568678cf65840dbd68fb141453f12f8a895f343ce53477f0`. Smoke-tested on the API 36 emulator (installs, first-run QR screen, no crash). Not tested on a real phone. |
+| Signed release build (Gradle) | **First real release built 2026-11-17: 1.0.0 (versionCode 1), signed with the real key** (kept offline by the maintainers). `apksigner`: v2 and v3 verify, signer SHA-256 `af3ff57c58d37591568678cf65840dbd68fb141453f12f8a895f343ce53477f0`. Smoke-tested on the API 36 emulator (installs, first-run QR screen, no crash). Not tested on a real phone. |
 | `android-release.yml` | **Never run.** There was no GitHub remote when it was written. Run it on a test tag in a private fork before it touches the real key. |
 | Reproducible build | Two clean builds on one machine gave byte-identical unsigned APKs. Not tried on a second machine or another OS. |
 
@@ -18,8 +18,8 @@ so that the app can be split into its own public repository.
 1. **Application id:** `com.varizpardaz.listener`. Android treats another id as another app, so it can never change after the first release.
    Debug builds add `.debug`, so both can sit on one phone.
 2. **License:** Apache-2.0 (`LICENSE`), with a `NOTICE` that lists the bundled font and the libraries. The release workflow refuses to run without `LICENSE`.
-3. **Signing key:** one RSA 3072 key signs every release. The first release (1.0.0) is signed with it; its certificate SHA-256 digest is published
-   in `latest.json` and on the download page, so anyone can check that an APK they hold is signed by the same key.
+3. **Signing key:** one RSA 3072 key signs every release. Its certificate SHA-256 digest is published in `latest.json` and on the download page,
+   so anyone can check that an APK they hold is signed by the same key.
 4. **Distribution:** the app is distributed directly from the project website (`https://varizpardaz.com/download/android`), not through Google Play or any app store.
    The public manifest is `https://varizpardaz.com/download/android/latest.json`.
 

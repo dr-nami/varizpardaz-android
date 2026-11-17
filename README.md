@@ -109,5 +109,5 @@ confirmation service. It is published so that anyone can read exactly what the a
 - everything uploaded is signed with a per-device secret issued when the phone is paired (HMAC, see [docs/device-api.md](docs/device-api.md)).
 
 The signed release APK is distributed from [varizpardaz.com/download/android](https://varizpardaz.com/download/android) with its SHA-256;
-the build can be reproduced and compared (see [docs/release.md](docs/release.md)). Report security problems through this repository's private vulnerability reporting (Security tab).
-License: Apache-2.0.
+the build can be reproduced and compared (see [docs/release.md](docs/release.md)). Report security problems through this repository's
+private vulnerability reporting (Security tab). License: Apache-2.0.
