@@ -11,7 +11,7 @@ so that the app can be split into its own public repository.
 | In-app update (download, SHA-256, archive check, system installer) | Run end to end on an emulator (Android 16 image): optional update, required update, user cancel, wrong checksum, wrong file, signing-key mismatch. Not run on a real phone, not on Android 14/15. |
 | Signed release build (Gradle) | **First real release built 2026-11-17: 1.0.0 (versionCode 1), signed with the real key** (kept offline by the maintainers). `apksigner`: v2 and v3 verify, signer SHA-256 `af3ff57c58d37591568678cf65840dbd68fb141453f12f8a895f343ce53477f0`. Smoke-tested on the API 36 emulator (installs, first-run QR screen, no crash). Not tested on a real phone. |
 | `android-release.yml` | **Never run.** There was no GitHub remote when it was written. Run it on a test tag in a private fork before it touches the real key. |
-| Reproducible build | Two clean builds on one machine gave byte-identical unsigned APKs. Not tried on a second machine or another OS. |
+| Reproducible build | **Verified 2026-11-17:** a fresh clone of the public repository built with `./gradlew :app:assembleRelease` (JDK 21, Windows, Android SDK 36) holds exactly the same 49 files as the published 1.0.0 APK (`compare-apks.mjs`: SAME). Two clean builds on one machine were also byte-identical. Not tried on Linux or with JDK 17. |
 
 ## Release facts
 
