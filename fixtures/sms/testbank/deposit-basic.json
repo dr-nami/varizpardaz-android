@@ -1,0 +1,13 @@
+{
+  "bank": "testbank",
+  "sender": "TESTBANK",
+  "body": "TESTBANK\nواریز: ۵,۰۰۰,۰۰۰ ریال\nحساب: ۱۲۳۴\nمانده: ۹۸,۰۰۰,۰۰۰\n1405/08/10 10:15",
+  "expected": {
+    "class": "deposit",
+    "amount_rial": "5000000",
+    "balance_rial": "98000000",
+    "account": "1234"
+  },
+  "source": "synthetic",
+  "notes": "Synthetic format for plumbing tests only."
+}

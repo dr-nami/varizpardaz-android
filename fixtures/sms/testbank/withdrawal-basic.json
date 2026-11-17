@@ -1,0 +1,13 @@
+{
+  "bank": "testbank",
+  "sender": "TESTBANK",
+  "body": "TESTBANK\nبرداشت: 1,250,000 ریال\nحساب: 1234\nمانده: 96,750,000\n1405/08/10 11:02",
+  "expected": {
+    "class": "withdrawal",
+    "amount_rial": "1250000",
+    "balance_rial": "96750000",
+    "account": "1234"
+  },
+  "source": "synthetic",
+  "notes": "Synthetic. Only a balance marker may leave the phone."
+}

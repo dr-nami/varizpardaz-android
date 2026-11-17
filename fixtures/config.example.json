@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "issued_at": "2026-11-01T10:00:00+03:30",
+  "heartbeat_interval_sec": 30,
+  "upload": {
+    "max_batch": 50
+  },
+  "otp_patterns": [
+    {
+      "pattern": "رمز\\s*(پویا|یکبار|دوم|عبور)",
+      "flags": ""
+    },
+    {
+      "pattern": "\\b(otp|password|passcode)\\b",
+      "flags": "i"
+    },
+    {
+      "pattern": "کد\\s*(تایید|تأیید|ورود|فعال\\s*سازی|امنیتی)",
+      "flags": ""
+    }
+  ],
+  "deposit_keywords": [
+    "واریز",
+    "بستانکار",
+    "انتقال به حساب",
+    "افزایش"
+  ],
+  "banks": [
+    {
+      "bank": "testbank",
+      "senders": [
+        "TESTBANK",
+        "+989990000000"
+      ],
+      "notification_packages": [
+        "ir.example.testbank"
+      ],
+      "deposit": [
+        {
+          "id": "testbank-dep-v1",
+          "pattern": "واریز:\\s*(?<amount>[0-9,]+)\\s*ریال\\s*حساب:\\s*(?<account>[0-9]+)\\s*مانده:\\s*(?<balance>[0-9,]+)",
+          "flags": "",
+          "unit": "rial",
+          "status": "unverified"
+        }
+      ],
+      "withdrawal": [
+        {
+          "id": "testbank-wd-v1",
+          "pattern": "برداشت:\\s*(?<amount>[0-9,]+)\\s*ریال\\s*حساب:\\s*(?<account>[0-9]+)\\s*مانده:\\s*(?<balance>[0-9,]+)",
+          "flags": "",
+          "unit": "rial",
+          "status": "unverified"
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "card_id": "card_test_1",
+      "bank": "testbank",
+      "label": "9999 **** **** 1234",
+      "sim_slot": 0
+    }
+  ],
+  "app_update": {
+    "latest_version_code": 1,
+    "min_version_code": 1,
+    "url": "https://example.invalid/listener-1.apk",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

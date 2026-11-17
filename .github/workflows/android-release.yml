@@ -1,0 +1,139 @@
+name: android-release
+
+# Builds, signs and drafts a GitHub release of the Android listener when a tag `android-v<versionName>` is pushed.
+#
+# NOT RUN YET: the repository had no remote when this was written, so every step below is untested on GitHub's runners
+# (the signing, the version guard and the checksum steps were exercised by hand with a throwaway key; see docs/release.md).
+# Run it first on a test tag in a private fork before trusting it with the real key.
+#
+# What it needs (docs/release.md has the how-to):
+#   - an environment named `android-release` holding the four secrets below, with required reviewers;
+#   - LICENSE (Apache-2.0; the job refuses to run without it);
+#   - brand.applicationIdFinal=true in brand.properties (the application id cannot change after the first release).
+on:
+  push:
+    tags:
+      - 'android-v*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: android-release
+    permissions:
+      contents: write # only to attach the draft release
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: gradle/actions/wrapper-validation@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+
+      - name: Check the tag, the version file and the release prerequisites
+        run: |
+          set -eu
+          version=$(sed -n 's/^versionName=//p' version.properties)
+          code=$(sed -n 's/^versionCode=//p' version.properties)
+          if [ "${GITHUB_REF_NAME}" != "android-v${version}" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} does not match versionName ${version} in version.properties"; exit 1
+          fi
+          if [ ! -f LICENSE ]; then
+            echo "::error::LICENSE is missing"; exit 1
+          fi
+          if ! grep -q '^brand.applicationIdFinal=true' brand.properties; then
+            echo "::error::brand.applicationIdFinal is not true: the application id is still provisional"; exit 1
+          fi
+          echo "VERSION_NAME=${version}" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=${code}" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # No build cache for a release: nothing but the source and the pinned toolchain may influence the APK.
+      - uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+        with:
+          cache-disabled: true
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+
+      - name: Tests
+        run: |
+          set -eu
+          npm test --prefix tools/mock-server
+          npm test --prefix tools/release
+          ./gradlew :core:test :app:testDebugUnitTest :app:lintDebug --stacktrace
+
+      - name: Decode the signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          set -eu
+          umask 077
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "PAYGATE_KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Build the signed release APK
+        env:
+          PAYGATE_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          PAYGATE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          PAYGATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: ./gradlew :app:assembleRelease --stacktrace
+
+      - name: Remove the signing key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/release.jks"
+
+      - name: Verify the signature, write the checksums and the release notes
+        run: |
+          set -eu
+          out=release-out
+          mkdir "$out"
+          name="listener-${VERSION_NAME}-${VERSION_CODE}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$out/$name"
+          apksigner=$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
+          "$apksigner" verify --verbose --print-certs "$out/$name" | tee "$out/apksigner.txt"
+          (cd "$out" && sha256sum "$name" > SHA256SUMS.txt)
+          sha=$(cut -d' ' -f1 "$out/SHA256SUMS.txt")
+          cert=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' "$out/apksigner.txt")
+          url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}/${name}"
+          {
+            echo "## Listener ${VERSION_NAME} (version code ${VERSION_CODE})"
+            echo
+            echo "- APK: \`${name}\`"
+            echo "- APK SHA-256: \`${sha}\`"
+            echo "- Signing certificate SHA-256: \`${cert}\`"
+            echo
+            echo "Check the download before installing it: \`sha256sum ${name}\` must print the number above."
+            echo "To check that this APK was built from this source, follow docs/release.md (\"Reproducing a release\")."
+            echo
+            echo "### For the server's config (contracts/device-api.md section 5)"
+            echo
+            echo '```json'
+            node tools/release/update-entry.mjs "$out/$name" --url "$url" 2>/dev/null
+            echo '```'
+          } > "$out/notes.md"
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: listener-release
+          path: release-out/
+          if-no-files-found: error
+
+      # A draft: a person reads the notes and publishes it, the workflow never does.
+      - name: Draft the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          gh release create "$GITHUB_REF_NAME" \
+            "release-out/listener-${VERSION_NAME}-${VERSION_CODE}.apk" release-out/SHA256SUMS.txt \
+            --draft --title "Listener ${VERSION_NAME}" --notes-file release-out/notes.md

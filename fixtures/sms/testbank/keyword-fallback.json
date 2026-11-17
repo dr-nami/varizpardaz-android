@@ -1,0 +1,10 @@
+{
+  "bank": "testbank",
+  "sender": "TESTBANK",
+  "body": "TESTBANK\nانتقال به حساب شما با موفقیت انجام شد. مبلغ ۲۰۰,۰۰۰ ریال",
+  "expected": {
+    "class": "deposit"
+  },
+  "source": "synthetic",
+  "notes": "No template matches; keyword fallback uploads it with template_id null."
+}

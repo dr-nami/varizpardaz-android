@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Debug builds only (this file is in src/debug, release never sees it): lets the app talk to the local mock
+    server over plain http. A phone on Wi-Fi reaches the mock at an address like 192.168.x.y, which cannot be
+    listed as a domain, hence the base config.
+-->
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <base-config
+        cleartextTrafficPermitted="true"
+        tools:ignore="InsecureBaseConfiguration" />
+</network-security-config>

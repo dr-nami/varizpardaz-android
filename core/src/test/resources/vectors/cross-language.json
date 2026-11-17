@@ -1,0 +1,57 @@
+{
+  "hmac": [
+    {
+      "name": "get config, empty body",
+      "method": "GET",
+      "path": "/v1/devices/config",
+      "body": "",
+      "device_id": "dev_vector",
+      "device_secret": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+      "timestamp": "1793600000",
+      "nonce": "__79_Pv6-fj39vX08_Lx8A",
+      "canonical": "v1\nGET\n/v1/devices/config\n1793600000\n__79_Pv6-fj39vX08_Lx8A\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "EtOLp_u8AkMwLuVBDqeZPSe26WsdP3gJmUlMbWdgyvE"
+    },
+    {
+      "name": "get with query string",
+      "method": "GET",
+      "path": "/v1/devices/config?since=7&x=%D8%A7",
+      "body": "",
+      "device_id": "dev_vector",
+      "device_secret": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+      "timestamp": "1793600000",
+      "nonce": "__79_Pv6-fj39vX08_Lx8A",
+      "canonical": "v1\nGET\n/v1/devices/config?since=7&x=%D8%A7\n1793600000\n__79_Pv6-fj39vX08_Lx8A\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "uhOZWk9IspD4cSmqaqHyxQxKSHodcAXO2eIh-sxWo24"
+    },
+    {
+      "name": "post heartbeat",
+      "method": "POST",
+      "path": "/v1/devices/heartbeat",
+      "body": "{\"sent_at\":\"2026-11-01T10:15:30+03:30\",\"queue_depth\":0}",
+      "device_id": "dev_vector",
+      "device_secret": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+      "timestamp": "1793600000",
+      "nonce": "__79_Pv6-fj39vX08_Lx8A",
+      "canonical": "v1\nPOST\n/v1/devices/heartbeat\n1793600000\n__79_Pv6-fj39vX08_Lx8A\n65d39b44596f4ead0e041874ddd248e60845d11cc2f1084db7d297eadff5adc0",
+      "signature": "nwoBoV8xD9j7OVOq8RkKk4MCnv0gSm0KFmwy7ulovAY"
+    },
+    {
+      "name": "post ingest with persian body",
+      "method": "POST",
+      "path": "/v1/ingest/android",
+      "body": "{\"items\":[{\"body\":\"واریز: ۵,۰۰۰ ریال\\nمانده: ۹۸\"}]}",
+      "device_id": "dev_vector",
+      "device_secret": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+      "timestamp": "1793600000",
+      "nonce": "__79_Pv6-fj39vX08_Lx8A",
+      "canonical": "v1\nPOST\n/v1/ingest/android\n1793600000\n__79_Pv6-fj39vX08_Lx8A\ndeea7cd3491dbebb96c4c1e58f1f2bcf74c1f0dff4fd37de6138ea93d0972fb0",
+      "signature": "HXD1Gk_zs5uzMlRVf-KqrJZgEEfzRz1PtBQxf_yV0xQ"
+    }
+  ],
+  "ed25519": {
+    "public_key": "_RckOFqgx1tk-3jNYC-h2ZH96_drE8WO1wLqyDXp9hg",
+    "message": "{\"version\":7,\"issued_at\":\"2026-11-01T10:00:00+03:30\",\"note\":\"واریز\"}",
+    "signature": "nBCUukHq_keyj37IUt9RlCcoeYYZLe4U_ew2C1_0CIyuDjT_FJGTMmE2yU2sTm6wkw5uTUgoQVjQkP3K57UQBw"
+  }
+}

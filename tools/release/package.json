@@ -1,0 +1,11 @@
+{
+  "name": "paygate-listener-release-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Checksum, update-entry and APK comparison helpers for releasing the Android listener. No dependencies.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}

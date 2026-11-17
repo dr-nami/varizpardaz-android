@@ -1,0 +1,10 @@
+{
+  "bank": "testbank",
+  "sender": "TESTBANK",
+  "body": "TESTBANK\nبه جشنواره پاییزی ما بپیوندید",
+  "expected": {
+    "class": "other"
+  },
+  "source": "synthetic",
+  "notes": "No pattern, no keyword: dropped as unclassified."
+}

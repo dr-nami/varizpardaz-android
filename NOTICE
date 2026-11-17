@@ -1,0 +1,19 @@
+واریز پرداز (varizpardaz) - Android listener
+Copyright 2026 OPROMO
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It includes or depends on the following third-party software. Each keeps its own license; this list is for attribution and is not a substitute for their license texts.
+
+Bundled in the app:
+- Vazirmatn font (regular, medium, bold). SIL Open Font License 1.1. Copyright the Vazirmatn Project Authors.
+  License text and authors: third_party/vazirmatn/OFL.txt and third_party/vazirmatn/AUTHORS.txt.
+
+Libraries linked into the app (versions are pinned in gradle/libs.versions.toml):
+- AndroidX (Activity, Lifecycle, Room, WorkManager, Compose UI, Compose Material 3). Apache License 2.0. The Android Open Source Project and Google.
+- Kotlin standard library, kotlinx.coroutines, kotlinx.serialization. Apache License 2.0. JetBrains s.r.o. and contributors.
+- OkHttp and Okio. Apache License 2.0. Square, Inc.
+- ZXing core and zxing-android-embedded. Apache License 2.0. ZXing authors; Journey Mobile.
+- Bouncy Castle (bcprov, lightweight API only, for Ed25519 verification). Bouncy Castle License (an MIT-style license). The Legion of the Bouncy Castle Inc.
+
+Build and test tools (not distributed): Gradle, Android Gradle Plugin, KSP, JUnit 5, kotlin-test, Node.js (mock server and release tools, no npm dependencies).

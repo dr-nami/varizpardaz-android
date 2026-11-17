@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    All user-facing text lives here, in Persian (this is the default resource set, so the app is Persian
+    whatever the phone's language). No hard-coded UI text in code: a unit test enforces it.
+    The product name, «واریز پرداز» (Latin slug varizpardaz), is the string `brand_name` below and nowhere else in the app; the iOS Shortcut has its own copy,
+    kept equal by a test (apps/ios-shortcut/tests).
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="brand_name">واریز پرداز</string>
+    <string name="app_name">@string/brand_name</string>
+
+    <string name="action_dismiss">بستن</string>
+    <string name="action_cancel">انصراف</string>
+
+    <!-- Pairing -->
+    <string name="pair_title">اتصال به حساب فروشنده</string>
+    <string name="pair_intro">در پنل فروشنده یک دستگاه اندروید اضافه کنید و کد QR نمایش‌داده‌شده را با همین گوشی اسکن کنید.</string>
+    <string name="pair_scan_button">اسکن کد QR</string>
+    <string name="pair_scan_prompt">کد QR پنل را داخل کادر قرار دهید</string>
+    <string name="pair_working">در حال اتصال…</string>
+    <string name="pair_debug_title">فقط نسخهٔ آزمایشی</string>
+    <string name="pair_debug_label">لینک اتصال</string>
+    <string name="pair_debug_button">اتصال با لینک</string>
+
+    <!-- Pairing errors: one message per cause -->
+    <string name="err_not_a_pairing_link">این کد QR مربوط به اتصال دستگاه نیست. کد را از بخش دستگاه‌ها در پنل فروشنده اسکن کنید.</string>
+    <string name="err_unsupported_version">نسخهٔ این کد QR با اپ سازگار نیست. اپ را به‌روز کنید یا یک کد تازه از پنل بسازید.</string>
+    <string name="err_bad_base_url">نشانی سرور داخل کد QR معتبر نیست. یک کد تازه از پنل بسازید.</string>
+    <string name="err_bad_code">کد اتصال داخل QR معتبر نیست. یک کد تازه از پنل بسازید.</string>
+    <string name="err_code_invalid">کد اتصال نامعتبر است یا منقضی شده است (هر کد ۱۰ دقیقه اعتبار دارد و فقط یک بار قابل استفاده است). یک کد تازه از پنل بسازید و دوباره اسکن کنید.</string>
+    <string name="err_rate_limited">تعداد تلاش‌ها زیاد بود. چند دقیقه صبر کنید و دوباره تلاش کنید.</string>
+    <string name="err_network">ارتباط با سرور برقرار نشد. اینترنت گوشی را بررسی کنید و دوباره تلاش کنید.</string>
+    <string name="err_tls">اتصال امن به سرور برقرار نشد. ساعت و تاریخ گوشی و نشانی سرور را بررسی کنید.</string>
+    <string name="err_server">سرور در حال حاضر پاسخ نمی‌دهد. کمی بعد دوباره تلاش کنید.</string>
+    <string name="err_bad_response">پاسخ سرور قابل‌اعتماد نبود و اتصال انجام نشد. اپ را به‌روز کنید یا با پشتیبانی تماس بگیرید.</string>
+    <string name="err_rejected">سرور این درخواست را نپذیرفت.</string>
+    <string name="err_camera_denied">برای اسکن کد QR باید اجازهٔ استفاده از دوربین را بدهید. می‌توانید آن را از تنظیمات گوشی، بخش برنامه‌ها، فعال کنید.</string>
+    <string name="err_storage_failed">ذخیرهٔ امن اطلاعات اتصال روی این گوشی ممکن نشد. گوشی را دوباره راه‌اندازی کنید و از اول تلاش کنید.</string>
+    <string name="err_already_paired">این دستگاه همین حالا به یک حساب وصل است. برای اتصال به حساب دیگر، ابتدا آن را جدا کنید.</string>
+
+    <!-- Paired -->
+    <string name="paired_server">سرور</string>
+    <string name="paired_device_id">شناسهٔ دستگاه</string>
+    <string name="unpair_button">جدا کردن دستگاه</string>
+    <string name="unpair_confirm_title">جدا کردن این دستگاه؟</string>
+    <string name="unpair_confirm_body">اطلاعات اتصال و پیامک‌های ارسال‌نشده از روی این گوشی پاک می‌شود. برای اتصال دوباره باید یک کد تازه از پنل بسازید.</string>
+    <string name="unpair_confirm_action">جدا کن</string>
+
+    <!-- Re-pair needed -->
+    <string name="repair_title">اتصال دوباره لازم است</string>
+    <string name="repair_body_unreadable">اطلاعات اتصال ذخیره‌شده روی این گوشی قابل‌خواندن نیست (مثلاً پس از بازنشانی یا تغییر قفل گوشی). دستگاه را دوباره وصل کنید.</string>
+    <string name="repair_body_revoked">این دستگاه از پنل فروشنده جدا شده است. اگر اشتباه بوده، یک کد تازه بسازید و دوباره وصل کنید.</string>
+    <string name="repair_button">اتصال دوباره</string>
+
+
+    <!-- The QR scanner library's own strings, overridden so nothing on its screen is in English -->
+    <string name="zxing_app_name" tools:ignore="UnusedResources">اسکن کد QR</string>
+    <string name="zxing_button_ok" tools:ignore="UnusedResources">باشه</string>
+    <string name="zxing_msg_camera_framework_bug" tools:ignore="UnusedResources">دوربین گوشی با مشکل روبه‌رو شد. گوشی را یک بار خاموش و روشن کنید و دوباره تلاش کنید.</string>
+    <string name="zxing_msg_default_status" tools:ignore="UnusedResources">کد QR را داخل کادر قرار دهید.</string>
+
+
+    <!-- Repair: secret rejected -->
+    <string name="repair_body_secret_rejected">سرور امضای این دستگاه را نمی‌پذیرد (مثلاً دستگاه در پنل دوباره ثبت یا حذف شده است). دستگاه را دوباره وصل کنید.</string>
+
+    <!-- SMS permission and queue status -->
+    <string name="sms_permission_hint_restricted">اگر گوشی اجازه را نشان نمی‌دهد یا رد می‌کند (اندروید ۱۳ به بالا): تنظیمات برنامه را باز کنید، سه‌نقطهٔ بالای صفحه را بزنید، «اجازهٔ تنظیمات محدودشده» را انتخاب کنید و دوباره اجازه را بدهید.</string>
+    <string name="stats_title">وضعیت پیامک‌ها</string>
+    <string name="stats_queue">در صف ارسال</string>
+    <string name="stats_uploaded">ارسال‌شده به سرور</string>
+    <string name="stats_rejected">ردشده توسط سرور</string>
+    <string name="stats_dropped_sender">نادیده‌گرفته‌شده (فرستندهٔ غیربانکی)</string>
+    <string name="stats_dropped_otp">رمز یک‌بارمصرف (روی گوشی حذف شد)</string>
+    <string name="stats_dropped_unclassified">پیامک بانکی بی‌ربط (نگه‌داشته نشد)</string>
+
+    <!-- Background upload notification (Android 11 and older show it while an upload runs) -->
+    <string name="upload_channel_name">ارسال پیامک‌های بانکی</string>
+    <string name="upload_notification_title">در حال ارسال واریزها…</string>
+
+    <!-- Foreground service notification -->
+    <string name="monitor_channel_name">نظارت بر پیامک‌های بانکی</string>
+    <string name="monitor_notification_title">در حال نظارت بر پیامک‌های بانکی</string>
+    <string name="monitor_notification_text">این دستگاه به حساب فروشنده وصل است.</string>
+
+    <!-- Optional: bank-app notifications -->
+    <string name="notif_source_title">خواندن اعلان اپ بانک (اختیاری)</string>
+    <string name="notif_source_body">اگر بانک شما به‌جای پیامک، اعلان اپ خودش را می‌فرستد، با روشن کردن این گزینه فقط اعلان اپ‌های بانکیِ تعریف‌شده در حساب خوانده می‌شود. اعلان برنامه‌های دیگر هرگز خوانده نمی‌شود.</string>
+    <string name="notif_source_active">خواندن اعلان اپ بانک فعال است.</string>
+    <string name="notif_source_need_access">برای کار کردن، دسترسی به اعلان‌ها را برای این برنامه روشن کنید.</string>
+    <string name="notif_source_open_settings">باز کردن تنظیمات دسترسی به اعلان‌ها</string>
+    <string name="notif_source_hint_restricted">اگر گوشی اجازهٔ روشن کردن را نمی‌دهد (اندروید ۱۳ به بالا): تنظیمات برنامه را باز کنید، سه‌نقطهٔ بالای صفحه را بزنید، «اجازهٔ تنظیمات محدودشده» را انتخاب کنید و دوباره تلاش کنید.</string>
+    <string name="notif_listener_label">خواندن اعلان اپ بانک</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_status">وضعیت</string>
+    <string name="nav_battery">راهنمای باتری</string>
+    <string name="nav_settings">تنظیمات</string>
+
+    <!-- Status: overall state -->
+    <string name="health_active">سرویس پیامک فعال است</string>
+    <string name="health_needs_action">سرویس فعال است، اما چند مورد نیاز به اقدام دارد</string>
+    <string name="health_connecting">در حال برقراری ارتباط با سرور…</string>
+    <string name="health_down">ارتباط با سرور قطع است</string>
+    <string name="health_down_hint">اینترنت گوشی را بررسی کنید. اگر برنامه را از برنامه‌های اخیر بسته‌اید، یک بار بازش کنید.</string>
+    <string name="status_last_contact">آخرین ارتباط با سرور</string>
+
+    <!-- Time since something happened. %1$s is a number in Persian digits. -->
+    <string name="age_never">هنوز نبوده</string>
+    <string name="age_just_now">همین الان</string>
+    <string name="age_seconds">%1$s ثانیه پیش</string>
+    <string name="age_minutes">%1$s دقیقه پیش</string>
+    <string name="age_hours">%1$s ساعت پیش</string>
+    <string name="age_days">%1$s روز پیش</string>
+
+    <string name="status_merchant_title">فروشندهٔ متصل</string>
+
+    <!-- Status: cards served by this phone (the list comes from the server's config) -->
+    <string name="status_cards_title">کارت‌های تحت پوشش</string>
+    <string name="status_cards_empty">هنوز فهرست کارت‌ها از سرور نرسیده یا کارتی برای این دستگاه تعریف نشده است.</string>
+    <string name="status_card_sim">سیم‌کارت %1$s</string>
+
+    <!-- Status: counters -->
+    <string name="stats_last_message">آخرین پیامک بانکی</string>
+    <string name="stats_since_pairing">شمارش از زمان اتصال دستگاه</string>
+
+    <!-- Status: permission and settings checklist -->
+    <string name="checklist_title">مجوزها و تنظیمات اندروید</string>
+    <string name="checklist_done">فعال</string>
+    <string name="checklist_recommended">پیشنهادی</string>
+    <string name="checklist_fix">رفع</string>
+    <string name="checklist_open_guide">راهنما</string>
+    <string name="checklist_all_done">همهٔ موارد لازم فعال است.</string>
+    <string name="ck_receive_sms_title">دریافت پیامک</string>
+    <string name="ck_receive_sms_why">برای تشخیص واریز، اپ باید پیامک‌های دریافتی را ببیند. فقط پیامک شماره‌های بانکیِ تعریف‌شده در حساب نگه داشته می‌شود؛ رمز پویا و پیامک‌های دیگر هرگز ذخیره یا ارسال نمی‌شوند.</string>
+    <string name="ck_read_sms_title">خواندن صندوق ورودی پیامک</string>
+    <string name="ck_read_sms_why">برای بازیابی پیامک‌هایی که گوشی گرفته ولی (مثلاً هنگام قطع بودن برنامه) به سرور نرسیده است.</string>
+    <string name="ck_post_notifications_title">نمایش اعلان وضعیت</string>
+    <string name="ck_post_notifications_why">برای دیدن اعلان همیشگیِ «در حال نظارت». برنامه بدون آن هم کار می‌کند، اما نشانه‌ای از فعال بودنش دیده نمی‌شود.</string>
+    <string name="ck_battery_title">معاف بودن از بهینه‌سازی باتری</string>
+    <string name="ck_battery_why">بدون این مورد، اندروید ممکن است برنامه را در پس‌زمینه ببندد و واریزها دیر یا هرگز ارسال نشوند.</string>
+    <string name="ck_restricted_title">محدودیت اجرا در پس‌زمینه</string>
+    <string name="ck_restricted_why">گوشی این برنامه را روی «محدود شده» (Restricted) گذاشته است. در این حالت اندروید سرویس برنامه را می‌بندد و دیگر خودش آن را دوباره روشن نمی‌کند؛ ضربان اتصال و بازیابی پیامک‌ها متوقف می‌شود. در تنظیمات برنامه ← باتری، «بدون محدودیت» (Unrestricted) را انتخاب کنید.</string>
+    <string name="ck_unused_title">توقف فعالیت برنامهٔ استفاده‌نشده</string>
+    <string name="ck_unused_why">اگر چند ماه این برنامه را باز نکنید، اندروید مجوزهایش (از جمله پیامک) را پس می‌گیرد. در صفحهٔ بازشده وارد «مجوزها» (Permissions) شوید و گزینهٔ مربوط به برنامهٔ استفاده‌نشده را خاموش کنید؛ نام آن بسته به نسخهٔ اندروید «Manage app if unused»، «Pause app activity if unused» یا «Remove permissions and free up space» است.</string>
+    <string name="ck_maker_title">تنظیمات پس‌زمینهٔ برند گوشی</string>
+    <string name="ck_maker_why">اندروید وضعیت این تنظیمات را گزارش نمی‌دهد. مراحل را در «راهنمای باتری» انجام دهید و سپس «مراحل را انجام دادم» را بزنید.</string>
+    <string name="ck_notif_access_title">دسترسی به اعلان‌ها</string>
+    <string name="ck_notif_access_why">شما خواندن اعلان اپ بانک را روشن کرده‌اید، اما اندروید هنوز دسترسی به اعلان‌ها را به این برنامه نداده است.</string>
+
+    <!-- Status: privacy note -->
+    <string name="privacy_title">متن پیامک‌ها در این برنامه نمایش داده نمی‌شود</string>
+    <string name="privacy_body">رمز پویا و پیامک برداشت هرگز از این گوشی خارج نمی‌شود. فقط پیامک واریز، و از برداشت‌ها تنها مبلغ و موجودی، به سرور فروشنده ارسال می‌شود.</string>
+
+    <!-- Battery guide -->
+    <string name="battery_warning_title">بدون این تنظیمات ممکن است واریزها دیر یا هرگز ارسال نشوند</string>
+    <string name="battery_warning_body">بیشتر گوشی‌ها برای کم کردن مصرف باتری، برنامه‌های پس‌زمینه را می‌بندند. این مراحل را یک بار روی هر گوشی انجام دهید.</string>
+    <string name="battery_exempt_title">معافیت از بهینه‌سازی باتری</string>
+    <string name="battery_exempt_on">فعال است</string>
+    <string name="battery_exempt_off">فعال نیست</string>
+    <string name="battery_exempt_button">درخواست معافیت</string>
+    <string name="battery_exempt_fallback">پنجرهٔ درخواست نمایش داده نشد؛ فهرست برنامه‌ها باز شد. این برنامه را پیدا کنید و روی «بدون محدودیت» (Don\'t optimize) بگذارید.</string>
+    <string name="battery_pick_maker">برند گوشی خود را انتخاب کنید</string>
+    <string name="battery_detected">شناسایی‌شده</string>
+    <string name="battery_open_screen">باز کردن این صفحه</string>
+    <string name="battery_opened_fallback">صفحهٔ مخصوص این گوشی پیدا نشد؛ تنظیمات برنامه باز شد. مسیر بالا را دستی دنبال کنید.</string>
+    <string name="battery_names_vary">نام گزینه‌ها بسته به نسخهٔ سیستم‌عامل کمی فرق می‌کند. اگر گزینه‌ای را پیدا نکردید، در جستجوی تنظیمات نام آن را بنویسید.</string>
+    <string name="battery_done_button">مراحل را انجام دادم</string>
+    <string name="battery_done_state">ثبت شد: مراحل این برند را انجام داده‌اید.</string>
+    <string name="battery_done_undo">برگشت</string>
+    <string name="battery_done_scope">این تأیید فقط گفتهٔ شماست؛ اندروید این تنظیمات را گزارش نمی‌دهد.</string>
+
+    <string name="maker_chip_xiaomi">شیائومی</string>
+    <string name="maker_chip_samsung">سامسونگ</string>
+    <string name="maker_chip_huawei">هوآوی / آنر</string>
+    <string name="maker_chip_oppo">اوپو / ریل‌می</string>
+    <string name="maker_chip_vivo">ویوو</string>
+    <string name="maker_chip_nokia">نوکیا</string>
+    <string name="maker_chip_other">سایر</string>
+
+    <string name="guide_title_xiaomi">مراحل گوشی‌های شیائومی، ردمی و پوکو (MIUI و HyperOS)</string>
+    <string name="guide_xiaomi_1">تنظیمات ← برنامه‌ها ← مدیریت برنامه‌ها ← این برنامه ← «شروع خودکار» (Autostart) را روشن کنید.</string>
+    <string name="guide_xiaomi_2">همان‌جا «صرفه‌جویی باتری» (Battery saver) را روی «بدون محدودیت» (No restrictions) بگذارید.</string>
+    <string name="guide_recents_lock_xiaomi">در صفحهٔ برنامه‌های اخیر روی کارت این برنامه بزنید و نگه دارید و نماد قفل را بزنید تا «پاک کردن همه» آن را نبندد.</string>
+
+    <string name="guide_title_samsung">مراحل گوشی‌های سامسونگ (One UI)</string>
+    <string name="guide_samsung_1">تنظیمات ← باتری ← «محدودیت‌های استفادهٔ پس‌زمینه» (Background usage limits) ← گزینهٔ «خواباندن برنامه‌های استفاده‌نشده» (Put unused apps to sleep) را خاموش کنید.</string>
+    <string name="guide_samsung_2">در همان صفحه «برنامه‌هایی که هرگز نمی‌خوابند» (Never sleeping apps) را باز کنید و این برنامه را اضافه کنید. مطمئن شوید در فهرست «برنامه‌های خوابیده» و «برنامه‌های خواب عمیق» نیست.</string>
+    <string name="guide_samsung_3">تنظیمات ← برنامه‌ها ← این برنامه ← باتری ← «نامحدود» (Unrestricted) را انتخاب کنید.</string>
+    <string name="guide_recents_lock_samsung">در صفحهٔ برنامه‌های اخیر روی نماد این برنامه (بالای کارت) بزنید و «باز نگه داشتن» (Keep open) را انتخاب کنید.</string>
+
+    <string name="guide_title_huawei">مراحل گوشی‌های هوآوی و آنر</string>
+    <string name="guide_huawei_1">تنظیمات ← برنامه‌ها ← «راه‌اندازی برنامه» (App launch) ← این برنامه را از «مدیریت خودکار» (Manage automatically) خارج کنید و «مدیریت دستی» (Manage manually) را انتخاب کنید.</string>
+    <string name="guide_huawei_2">سه گزینهٔ «راه‌اندازی خودکار» (Auto-launch)، «راه‌اندازی ثانویه» (Secondary launch) و «اجرا در پس‌زمینه» (Run in background) را روشن کنید.</string>
+
+    <string name="guide_title_oppo">مراحل گوشی‌های اوپو، ریل‌می و وان‌پلاس</string>
+    <string name="guide_oppo_1">تنظیمات ← برنامه‌ها ← مدیریت برنامه‌ها ← این برنامه ← «شروع خودکار» (Auto launch) را روشن کنید.</string>
+    <string name="guide_oppo_2">همان‌جا در بخش «مصرف باتری» (Battery usage)، «اجازهٔ فعالیت در پس‌زمینه» (Allow background activity) را روشن کنید.</string>
+
+    <string name="guide_title_vivo">مراحل گوشی‌های ویوو و آی‌کیو</string>
+    <string name="guide_vivo_1">تنظیمات ← باتری ← «مصرف باتری در پس‌زمینه» (Background power consumption) ← این برنامه ← «اجازهٔ مصرف زیاد در پس‌زمینه» (Allow high background power consumption) را روشن کنید.</string>
+    <string name="guide_vivo_2">تنظیمات ← برنامه‌ها ← «شروع خودکار» (Autostart) ← این برنامه را روشن کنید.</string>
+
+    <string name="guide_title_nokia">مراحل گوشی‌های نوکیا (HMD)</string>
+    <string name="guide_nokia_1">تنظیمات ← باتری ← «صرفه‌جویی باتری» (Battery saver) را خاموش نگه دارید، یا این برنامه را از محدودیتش معاف کنید.</string>
+    <string name="guide_nokia_2">تنظیمات ← برنامه‌ها ← این برنامه ← پیشرفته ← باتری ← «بدون محدودیت» (Unrestricted). اگر «باتری تطبیقی» (Adaptive Battery) روشن است، آن را هم خاموش کنید.</string>
+
+    <string name="guide_title_other">مراحل گوشی‌های دیگر (پیکسل، موتورولا، سونی و …)</string>
+    <string name="guide_other_1">تنظیمات ← برنامه‌ها ← این برنامه ← باتری ← «بدون محدودیت» (Unrestricted) را انتخاب کنید.</string>
+    <string name="guide_other_2">«صرفه‌جویی باتری» (Battery saver) را خاموش نگه دارید؛ وقتی روشن است ممکن است کار پس‌زمینه را محدود کند.</string>
+
+    <string name="guide_recents_lock_generic">در صفحهٔ برنامه‌های اخیر، کارت این برنامه را قفل کنید تا «پاک کردن همه» آن را نبندد (روش قفل کردن بسته به نسخه فرق دارد: نماد قفل، سه‌نقطه یا کشیدن کارت به پایین).</string>
+
+    <!-- In-app update -->
+    <string name="update_available_title">نسخهٔ جدید برنامه آماده است</string>
+    <string name="update_available_body">می‌توانید نسخهٔ جدید را دانلود و نصب کنید. تا پایان نصب، برنامه به کار خود ادامه می‌دهد.</string>
+    <string name="update_required_title">به‌روزرسانی ضروری است</string>
+    <string name="update_required_body">این نسخهٔ برنامه دیگر پشتیبانی نمی‌شود. تا زمانی که به‌روز نشود، پیامک‌های بانکی روی گوشی نگه‌داشته می‌شوند اما به سرور ارسال نمی‌شوند؛ پس از به‌روزرسانی همهٔ آن‌ها ارسال می‌شود.</string>
+    <string name="update_required_manual">به‌روزرسانی خودکار ممکن نیست. نسخهٔ جدید برنامه را به‌صورت دستی نصب کنید یا با پشتیبانی تماس بگیرید.</string>
+    <string name="update_installed_version">نسخهٔ نصب‌شده</string>
+    <string name="update_new_version">نسخهٔ جدید</string>
+    <string name="update_button">دانلود و نصب</string>
+    <string name="update_retry">تلاش دوباره</string>
+    <string name="update_downloading">در حال دانلود…</string>
+    <string name="update_downloading_percent">در حال دانلود… %1$s٪</string>
+    <string name="update_waiting_installer">پنجرهٔ نصب را تأیید کنید. ممکن است Google Play Protect هم پیشنهاد اسکن برنامه بدهد؛ این پنجره‌ها از خود گوشی است و هر انتخابی بکنید نصب با همان ادامه پیدا می‌کند. اگر پنجره‌ای دیده نمی‌شود، همین دکمه را دوباره بزنید.</string>
+    <string name="update_permission_needed">فایل دانلود و بررسی شد. برای نصب، اجازهٔ «نصب برنامه از این منبع» (Install unknown apps) را برای این برنامه روشن کنید و برگردید.</string>
+    <string name="update_open_install_settings">باز کردن تنظیمات</string>
+    <string name="update_err_network">دانلود کامل نشد. اینترنت گوشی را بررسی کنید و دوباره تلاش کنید.</string>
+    <string name="update_err_server">سرور فایل به‌روزرسانی پاسخ درستی نداد. کمی بعد دوباره تلاش کنید.</string>
+    <string name="update_err_checksum">فایل دانلودشده با فایلی که سرور اعلام کرده یکی نیست؛ دور ریخته شد و چیزی نصب نشد. دوباره تلاش کنید و اگر تکرار شد با پشتیبانی تماس بگیرید.</string>
+    <string name="update_err_too_large">فایل به‌روزرسانی بزرگ‌تر از حد انتظار است و دانلود نشد.</string>
+    <string name="update_err_wrong_file">فایل دانلودشده مربوط به همین برنامه یا نسخهٔ اعلام‌شده نیست و نصب نشد.</string>
+    <string name="update_err_storage">فضای کافی برای دانلود یا نصب نیست. جا باز کنید و دوباره تلاش کنید.</string>
+    <string name="update_err_aborted">نصب انجام نشد (پنجرهٔ نصب بسته یا رد شد). دوباره تلاش کنید.</string>
+    <string name="update_err_blocked">گوشی نصب را مسدود کرد (مثلاً به‌خاطر تنظیمات امنیتی یا سیاست دستگاه).</string>
+    <string name="update_err_conflict">نسخهٔ جدید با نسخهٔ نصب‌شده سازگار نیست (مثلاً با کلید امضای دیگری ساخته شده است). برای نصب باید برنامه را حذف و دوباره نصب کنید؛ با حذف برنامه اتصال دستگاه و پیامک‌های ارسال‌نشده پاک می‌شود.</string>
+    <string name="update_err_incompatible">نسخهٔ جدید با این گوشی سازگار نیست.</string>
+    <string name="update_err_other">نصب انجام نشد. دوباره تلاش کنید.</string>
+
+    <!-- Settings -->
+    <string name="settings_app_version">نسخهٔ برنامه</string>
+    <string name="settings_config_version">نسخهٔ تنظیمات سرور</string>
+    <string name="settings_config_none">هنوز دریافت نشده</string>
+</resources>
