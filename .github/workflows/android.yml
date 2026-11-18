@@ -104,7 +104,8 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           target: google_apis
-                    script: ./gradlew :app:connectedDebugAndroidTest --stacktrace
+          working-directory: .
+          script: ./gradlew :app:connectedDebugAndroidTest --stacktrace
 
       - name: Upload test reports
         if: failure()
